@@ -1,0 +1,81 @@
+-- GUI
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("AK Hub", "DarkTheme")
+
+-- UNIVERSAL
+local Universal = Window:NewTab("Universal")
+local UniversalSection = Universal:NewSection("Universal Scripts")
+
+
+UniversalSection:NewButton("Simplity Hub", "A Hub for Many Things", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/simplityv2/main/main"))()
+end)
+
+
+UniversalSection:NewButton("Gelatek Hub", "A Hub for Many Things", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/Main.lua"))()
+end)
+
+
+UniversalSection:NewButton("VG Hub", "A Hub for Many Things", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end)
+
+
+UniversalSection:NewButton("Infinite Yield", "Simple Admin Script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+
+UniversalSection:NewButton("Owl Hub", "Aimbot and other things", function()
+    -- Note: Owl Hub runs on paid Exploits/Executors like Synapse X, Protosmasher, Visenya, etc.
+-- Credits to: CriShoux#4012, Google Chrome#6242
+
+-- Owl Hub can run many popular games like Strucid, Arsenal, Bad Business, and even more!
+-- Featuring many FPS gui options ranging from ESP, Aimbot, Silent Aim, Weapon Mods, etc.
+
+-- Owl Hub also updates every now and then. Come back to find an updated version of this amazing script.
+-- Currently, Owl Hub runs on 35 different games. You can find those games at:
+-- https://v3rmillion.net/showthread.php?tid=912602
+
+-- Script:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+
+-- Enjoy!
+-- Post By: 1x5x0x7x3 on Pastebin
+-- Post By: MMarkosPro21 on Github
+end)
+
+-- GUI 2
+local Player = Window:NewTab("Local Player")
+local PlayerSection = Player:NewSection("Local Player")
+
+
+PlayerSection:NewSlider("Walkspeed", "Changes Player Speed", 500, 8, function(s) -- 500 (MaxValue) | 8 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+PlayerSection:NewSlider("Jumppower", "Changes Players Jump Height", 400, 0, function(s) -- 500 (MaxValue) | 8 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+
+PlayerSection:NewButton("Reset Speed And Jump", "Reset the player speed and jump height", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+end)
+
+
+local Credits = Window:NewTab("Credits")
+local CreditsSection = Credits:NewSection("Credits")
+
+
+CreditsSection:NewTextBox("Made By Akko - Wx_lfenWasTaken on roblox", "The Creator Of the Hub", function(txt)
+	print "Thanks For Using"
+end)
+
+
+CreditsSection:NewKeybind("Ui Keybind", "Changes the Ui toggle keybind", Enum.KeyCode.R, function()
+	Library:ToggleUI()
+end)
