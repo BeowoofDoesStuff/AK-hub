@@ -85,6 +85,11 @@ MainSection:NewButton("Infinite Yield", "Simple Admin Script", function()
 end)
 
 
+MainSection:NewButton("CMD-X", "Great Admin Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
+end)
+
+
 local Universal = Window:NewTab("Universal")
 local UniversalSection = Universal:NewSection("Universal Scripts")
 
@@ -921,7 +926,7 @@ end)
 
 
 
-UniversalSection:NewButton("Name", "Description", function()
+UniversalSection:NewButton("ESP GUI", "ESP for games", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua"))()
 end)
 
@@ -967,6 +972,14 @@ end)
 
 ScriptsSection:NewButton("Fe Snake", "Turns You Into A Snake", function()
     loadstring(game:HttpGet(('https://pastefy.ga/tWBTcE4R/raw'),true))()
+end)
+
+
+local ScriptsSection = Scripts:NewSection("Movement Scripts")
+
+
+ScriptsSection:NewButton("Fe Snake", "Turns You Into A Snake", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/B5MPd177"))()
 end)
 
 
