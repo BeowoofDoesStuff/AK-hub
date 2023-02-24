@@ -24,7 +24,7 @@ end)
 
 
 -- main jump
-local MainSection = Player:NewSection("Jump")
+local MainSection = Main:NewSection("Jump")
 
 
 -- jumpheight changer
@@ -34,7 +34,7 @@ end)
 
 
 -- jumpheight reset
-MainSection:NewButton("Reset Jumpheightr", "Sets the jumpheight to 50 - default", function()
+MainSection:NewButton("Reset Jumpheight", "Sets the jumpheight to 50 - default", function()
     local player = game:GetService("Players").LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
@@ -201,6 +201,62 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/topitbopit/stuff/main
 end)
 
 
+-- x ray
+MainSection:NewButton("X-ray", "See through walls (e)", function()
+    --made by ScareCrowV3RM
+local xrayHotkey = Enum.KeyCode.E
+
+local uis = game:GetService("UserInputService")
+
+
+local xrayOn = false
+
+
+uis.InputBegan:Connect(function(inp, processed)
+	
+	
+	if processed then return end
+	
+	
+	if inp.KeyCode == xrayHotkey then
+		
+		
+		xrayOn = not xrayOn
+		
+		
+		for i, descendant in pairs(workspace:GetDescendants()) do
+				
+			if descendant:IsA("BasePart") then
+				
+				if xrayOn then
+					
+					if not descendant:FindFirstChild("OriginalTransparency") then
+						
+						local originalTransparency = Instance.new("NumberValue")
+						originalTransparency.Name = "OriginalTransparency"
+						originalTransparency.Value = descendant.Transparency
+						originalTransparency.Parent = descendant
+					end
+					
+					descendant.Transparency = 0.5
+					
+				else
+					descendant.Transparency = descendant.OriginalTransparency.Value
+				end
+			end
+		end
+	end
+end)
+end)
+
+
+-- lag switch
+MainSection:NewButton("Lag Switch", "Pretend lags you (x)", function()
+    loadstring(game:HttpGet("https://paste.gg/p/anonymous/d3492bd620bd4c46b54680ac80b0fa0d/files/161ddd9c992c4ceba3c298458d45188a/raw", true))()
+end)
+
+
+
 -- esp gui
 MainSection:NewButton("ESP GUI", "ESP for many games", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua"))()
@@ -208,7 +264,7 @@ end)
 
 
 -- click tp tool
-MainSection:NewButton("Click TP Tool", "Tool that tp's you where you click on screen", function()
+MainSection:NewButton("Click TP Tool", "tp's you where you click on screen", function()
     mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
 tool.RequiresHandle = false
@@ -223,7 +279,7 @@ end)
 
 
 -- e to noclip
-MainSection:NewButton("Noclip", "E to toggle noclip", function()
+MainSection:NewButton("Noclip", "Walk through walls (e)", function()
 	local StealthMode = true -- If game has an anticheat that checks the logs
 
 local Indicator
@@ -280,7 +336,7 @@ end)
 
 -- hubs admin
 local Hubs = Window:NewTab("Hubs")
-local HubsSection = Main:NewSection("Admin")
+local HubsSection = Hubs:NewSection("Admin")
 
 
 -- infinite yield
@@ -296,7 +352,7 @@ end)
 
 
 -- hubs Aimbot, Autofarm, etc.
-local HubsSection = Main:NewSection("Aimbot, Autofarm, etc.")
+local HubsSection = Hubs:NewSection("Aimbot, Autofarm, etc.")
 
 
 -- owl hub
@@ -327,7 +383,7 @@ end)
 
 
 -- hubs script hubs
-local HubsSection = Main:NewSection("Script hubs")
+local HubsSection = Hubs:NewSection("Script hubs")
 
 
 -- simplity hub
@@ -371,25 +427,25 @@ end)
 
 
 -- ez hub
-HubsSection:NewButton("EZ hub", "Animations, and scripts for a wide variety of games", function()
+HubsSection:NewButton("EZ hub", "Animations, and scripts for lots of games", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/Launcher.lua'),true))()
 end)
 
 
 -- scripts fe
 local Scripts = Window:NewTab("Scripts")
-local ScriptsSection = Main:NewSection("Fe scripts")
+local ScriptsSection = Scripts:NewSection("Fe scripts")
 
 
 -- fe scp 173
-ScriptsSection:NewButton("Fe Scp 173", "Useful teleporting fling script - X to toggle on/off (requires hats)", function()
+ScriptsSection:NewButton("Fe Scp 173", "X to toggle mode (hats required)", function()
     _G.KeyCode = "X"
 loadstring(game:HttpGet("https://shattered-gang.lol/scripts/fe/fe_scp_173.lua"))()
 end)
 
 
 -- fe zombie
-ScriptsSection:NewButton("Fe Zombie", "Spawns controllable zombie - cmds - >bring , >range (num) , >idle", function()
+ScriptsSection:NewButton("Fe Zombie", "cmds - >bring , >range (num) , >idle (hats required)", function()
     --[[
 
 FE Zombie by quirky anime boy#7003
@@ -414,7 +470,7 @@ end)
 
 
 -- fe minions
-ScriptsSection:NewButton("Fe Minions", "Following Minions, type /e follow <DisplayName> in chat to follow another player (requires hats)", function()
+ScriptsSection:NewButton("Fe Minions", "type /e follow <DisplayName> in chat to follow them (hats required)", function()
     --made by rouxhaver/1+1=2
 --type "/e follow <DisplayName>" to make them follow someone else
 
@@ -1441,11 +1497,11 @@ end)
 
 
 -- scripts chat scripts
-local ScriptsSection = Main:NewSection("Chat scripts")
+local ScriptsSection = Scripts:NewSection("Chat scripts")
 
 
 -- chat translator
-ScriptsSection:NewButton("Chat Translator", "Translates your chat to speak any language, and sends you what other people are saying in different langurages - check script in executor to see language keybinds", function()
+ScriptsSection:NewButton("Chat Translator", "translates text, check script to see keybinds", function()
     loadstring(game:HttpGetAsync('https://i.qts.life/r/ChatInlineTranslator.lua', true))()
 --[[
 af = "Afrikaans",
@@ -1670,4 +1726,16 @@ local function XORDD_fake_script() -- Frame.Dragify
 	end)
 end
 coroutine.wrap(XORDD_fake_script)()
+end)
+
+
+-- settings
+local Settings = Window:NewTab("Settings")
+local SettingsSection = Settings:NewSection("Credits to Deramk for making the little hub")
+local SettingsSection = Settings:NewSection("sub to @AkkoDoinSomethin on yt")
+
+
+-- keybind setting
+SettingsSection:NewKeybind("UI keybind", "Changes the Ui toggle keybind", Enum.KeyCode.LeftAlt, function()
+	Library:ToggleUI()
 end)
